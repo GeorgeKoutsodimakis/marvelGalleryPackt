@@ -1,4 +1,4 @@
-package com.example.marvelgallery
+package com.example.marvelgallery.adapter
 
 import com.example.marvelgallery.recyclerAstraction.AnyItemAdapter
 import com.example.marvelgallery.recyclerAstraction.RecyclerListAdapter

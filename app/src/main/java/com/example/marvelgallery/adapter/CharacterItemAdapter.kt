@@ -1,16 +1,17 @@
-package com.example.marvelgallery
+package com.example.marvelgallery.adapter
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.marvelgallery.R
 import com.example.marvelgallery.extensions.bindView
 import com.example.marvelgallery.extensions.loadImage
-import com.example.marvelgallery.models.ModelCharachter
+import com.example.marvelgallery.data.models.ModelCharacter
 import com.example.marvelgallery.recyclerAstraction.ItemAdapter
 
 class CharacterItemAdapter(
-    private val character: ModelCharachter
+    private val character: ModelCharacter
 ) : ItemAdapter<CharacterItemAdapter.ViewHolder>(R.layout.item_character) {
     override fun onCreateViewHolder(itemView: View): ViewHolder = ViewHolder(itemView)
 
