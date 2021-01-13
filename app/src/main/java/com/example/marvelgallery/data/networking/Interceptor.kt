@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import com.example.marvelgallery.BuildConfig
 import java.math.BigInteger
 import java.security.MessageDigest
+import javax.crypto.Cipher.PUBLIC_KEY
 
 
 fun makeHeadersInterceptor() = Interceptor { chain -> // 1
@@ -22,9 +23,10 @@ fun makeAddSecurityQueryInterceptor() = Interceptor { chain ->
 
     // Url customization: add query parameters
     val url = originalRequest.url.newBuilder()
-        .addQueryParameter("apikey", BuildConfig.PUBLIC_KEY) // 1
-        .addQueryParameter("ts", "$timeStamp") // 1
-        .addQueryParameter("hash", calculatedMd5(timeStamp.toString() + BuildConfig.PRIVATE_KEY + BuildConfig.PUBLIC_KEY)) // 1
+        .addQueryParameter("apikey", "519bab83fed8d6962c976b57118db50c")
+        .addQueryParameter("ts", "$timeStamp")
+        .addQueryParameter("hash", calculatedMd5(timeStamp.toString() + "9deb6c61644111ec559b3f49ef08b8b57e1a6b54" + "519bab83fed8d6962c976b57118db50c"))
+
         .build()
 
     // Request customization: set custom url
@@ -49,7 +51,7 @@ fun makeLoggingInterceptor() = HttpLoggingInterceptor().apply {
 fun calculatedMd5(text: String): String {
     val messageDigest = getMd5Digest(text)
     val md5 = BigInteger(1, messageDigest).toString(16)
-    return "0" * (32 - md5.length) + md5 // 1
+    return "0" * (32 - md5.length) + md5 // 3
 }
 
 private fun getMd5Digest(str: String): ByteArray = MessageDigest.getInstance("MD5").digest(str.toByteArray())

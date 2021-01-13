@@ -7,6 +7,7 @@ import com.example.marvelgallery.views.MainView
 
 class MainPresenter(private val view: MainView, val repository: MarvelRepository) :
     BasePresenter() {
+
     fun onViewCreated() {
         loadCharachters()
     }

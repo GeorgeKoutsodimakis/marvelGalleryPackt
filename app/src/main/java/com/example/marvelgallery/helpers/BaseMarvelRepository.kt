@@ -6,7 +6,7 @@ import com.example.marvelgallery.views.MainView
 import io.reactivex.rxjava3.core.Single
 
 
-open class BaseMarvelRepository(val onGetCharacters: () -> Single<List<ModelCharacter>>) : MarvelRepository() {
+open class BaseMarvelRepository(val onGetCharacters: () -> Single<List<ModelCharacter>>) : MarvelRepository {
 
     override fun getAllCharacters(): Single<List<ModelCharacter>> = onGetCharacters()
 }
